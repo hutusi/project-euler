@@ -27,7 +27,7 @@ Dir.foreach(problems_path) do |problem|
   if not File.exist? answer_path
     puts "answer for problem #{problem} is not exist"
   elsif not File.exist? ruby_path
-    puts "solution for problem #{problem} is not exist"
+    assert(false, "solution for problem #{problem} is not exist")
   else 
     assert(right?(answer_path, ruby_path))
   end
