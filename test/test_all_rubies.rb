@@ -3,7 +3,7 @@
 require "test/unit"
 #require "benchmark"
 
-$root = ARGV[0]
+$root = ARGV[0].to_s
 
 def answer answer_path
   File.open(answer_path, "r").readlines.last.strip
