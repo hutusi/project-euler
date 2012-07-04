@@ -2,7 +2,7 @@
 
 
 # third version
-# 10 seconds...
+# 1.5 seconds...
 require File.dirname(__FILE__) + '/util/prime.rb'
 
 $prime = Prime.new
