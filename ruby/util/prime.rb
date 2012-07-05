@@ -2,41 +2,48 @@
 
 class Prime
   attr_reader :primes
+  @@primes = [2, 3]
+  @@cursor = 0
 
   def Prime.is? num
+    return @@primes.include? num if @@primes.last >= num 
+
     sqr = Math.sqrt(num).round
     2.upto(sqr) {|x| return false if num % x == 0}
     true
   end
 
-  def initialize
-    @primes = [2, 3]
+  def initialize    
     reset!
   end
   
-  def reset!
-    @cursor = 0
+  def Prime.reset!
+    @@cursor = 0
   end
 
-  def next!
-    if @primes.length > @cursor
-      prime = @primes[@cursor] 
+  def Prime.primes
+    @@primes
+  end
+
+  def Prime.next!
+    if @@primes.length > @@cursor
+      prime = @@primes[@@cursor] 
     else
-      prime = @primes.last + 2
+      prime = @@primes.last + 2
       while not is_prime? prime
         prime += 2
       end
-      @primes << prime
+      @@primes << prime
     end
 
-    @cursor += 1
+    @@cursor += 1
     prime
   end
 
 private
 
-  def is_prime? n
-    @primes.each do |x|
+  def Prime.is_prime? n
+    @@primes.each do |x|
       return false if n % x == 0
       return true if x * x > n 
     end

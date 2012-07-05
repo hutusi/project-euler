@@ -16,6 +16,5 @@
 
 require File.dirname(__FILE__) + '/util/prime.rb'
 
-prime = Prime.new
-10001.times {prime.next!}
-puts prime.primes.last
+10001.times {Prime.next!}
+puts Prime.primes.last

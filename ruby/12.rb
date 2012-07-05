@@ -5,13 +5,11 @@
 # 1.5 seconds...
 require File.dirname(__FILE__) + '/util/prime.rb'
 
-$prime = Prime.new
-
 def factors_sum_of n 
   factors = []
-  $prime.reset!
+  Prime.reset!
   while n > 1
-    factor = $prime.next!
+    factor = Prime.next!
     num = 0
     while n % factor == 0
       n /= factor
