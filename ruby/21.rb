@@ -12,13 +12,23 @@ amounts = {}
     amounts[x] = a if a < 10_000
 end
 
-amicables = []
+#amicables = []
 nums = amounts.keys
+
+sum = 0
 nums.each do |x|
-  amounts.each do |k, v|
-    amicables << x and amicables << k if x == v and k == amounts[x] and x != k
-  end
+  sum_of_divisors = amounts[x]
+  sum += (sum_of_divisors + x) if sum_of_divisors > x and amounts[sum_of_divisors] == x     
 end
 
-amicables.uniq!
-puts amicables.inject(0) {|sum,x| sum + x}
+puts sum
+
+
+# nums.each do |x|
+#   amounts.each do |k, v|
+#     amicables << x and amicables << k if x == v and k == amounts[x] and x != k
+#   end
+# end
+
+# amicables.uniq!
+# puts amicables.inject(0) {|sum,x| sum + x}
