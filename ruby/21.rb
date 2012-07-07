@@ -16,7 +16,7 @@ amicables = []
 nums = amounts.keys
 nums.each do |x|
   amounts.each do |k, v|
-    amicables << x and amicables << k if x == v and k = amounts[x]
+    amicables << x and amicables << k if x == v and k == amounts[x] and x != k
   end
 end
 
