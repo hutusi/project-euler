@@ -6,10 +6,8 @@ require File.dirname(__FILE__) + '/util/factor.rb'
 amounts = {}
 2.upto(10_000 - 1) do |x|
 	next if Prime.is? x
-	factors = (factors_of x)
-	factors.delete(x)
-	a = factors.inject(0) {|sum, f| sum + f}
-    amounts[x] = a if a < 10_000
+	fs = sum_proper_factors_of x
+    amounts[x] = fs if fs < 10_000
 end
 
 #amicables = []

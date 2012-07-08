@@ -31,4 +31,11 @@ def factors_of num
     factors.sort!.uniq
 end
 
+def sum_proper_factors_of num
+  factors = (factors_of num)
+  factors.delete(num)
+  factors.inject(0) {|sum, f| sum + f}
+end
+
+
 # puts factors_of 220  #=> 1, 2, 4, 5, 10, 11, 20, 22, 44, 55, 110, 220
