@@ -6,11 +6,12 @@ class Prime
   @@cursor = 0
 
   def Prime.is? num
-    return @@primes.include? num if @@primes.last >= num 
+    Prime.get_more until @@primes.last >= num
+    return @@primes.include? num 
 
-    sqr = Math.sqrt(num).round
-    2.upto(sqr) {|x| return false if num % x == 0}
-    true
+    #sqr = Math.sqrt(num).round
+    #2.upto(sqr) {|x| return false if num % x == 0}
+    #true
   end
 
   def initialize    
@@ -25,25 +26,26 @@ class Prime
     @@primes
   end
 
-  def Prime.next!
-    if @@primes.length > @@cursor
-      prime = @@primes[@@cursor] 
-    else
-      prime = @@primes.last + 2
-      while not is_prime? prime
-        prime += 2
-      end
-      @@primes << prime
+  def Prime.get_more
+    prime = @@primes.last + 2
+    while not is_prime? prime
+      prime += 2
     end
+    @@primes << prime
+  end
 
+  def Prime.next!
+    Prime.get_more until @@primes.length > @@cursor
     @@cursor += 1
-    prime
+    @@primes[@@cursor - 1]
   end
 
 private
 
   def Prime.is_prime? n
+    sqr = Math.sqrt(n).round
     @@primes.each do |x|
+      return true if x > sqr 
       return false if n % x == 0
       return true if x * x > n 
     end

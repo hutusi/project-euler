@@ -1,11 +1,11 @@
 #coding: utf-8
 
-def max_prime_factor num
-  divisor, remainder = 2,num
-  while divisor * divisor < remainder
-    (remainder % divisor).zero? ? (remainder /= divisor) : (divisor += 1)
+def max_prime_factor_of num
+  divisor, quotient = 2,num
+  while divisor * divisor < quotient
+    (quotient % divisor == 0) ? (quotient /= divisor) : (divisor += 1)
   end
-  remainder
+  quotient
 end
 
-puts max_prime_factor 600851475143
+puts max_prime_factor_of 600851475143
